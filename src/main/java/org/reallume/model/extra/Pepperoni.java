@@ -1,22 +1,23 @@
 package org.reallume.model.extra;
 
-import org.reallume.model.pizza.BasePizza;
+import org.reallume.model.pizza.Pizza;
 import org.reallume.model.pizza.PizzaDecorator;
 
 
 public class Pepperoni extends PizzaDecorator {
 
     private String name = "пепперони";
-    private final BasePizza basePizza;
+    private String basePizzaName = "Обычная пицца";
+    private final Pizza pizza;
 
-    public Pepperoni(BasePizza basePizza) {
-        super(basePizza);
-        this.basePizza = basePizza;
+    public Pepperoni(Pizza pizza) {
+        super(pizza);
+        this.pizza = pizza;
     }
 
     @Override
     public String getName() {
-        if(super.getName().equals(basePizza.getName()))
+        if(super.getName().equals(basePizzaName))
             return super.getName() + " c " + this.name;
         else
             return super.getName() + ", " + this.name;

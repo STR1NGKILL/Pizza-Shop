@@ -21,6 +21,6 @@ public class BasePizza implements Pizza {
 
     @Override
     public Double getPrice() {
-        return null;
+        return price;
     }
 }

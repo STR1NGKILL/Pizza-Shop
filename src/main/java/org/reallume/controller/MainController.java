@@ -1,8 +1,7 @@
 package org.reallume.controller;
 
 import org.reallume.model.extra.Bacon;
-import org.reallume.model.extra.Mushroom;
-import org.reallume.model.extra.Tomato;
+import org.reallume.model.extra.Chicken;
 import org.reallume.model.pizza.BasePizza;
 import org.reallume.model.pizza.Pizza;
 import org.springframework.stereotype.Controller;
@@ -20,7 +19,12 @@ public class MainController {
     public String mainPage(){
 
         Pizza pizza = new Bacon(new BasePizza());
-        LOGGER.info(pizza.getName());
+        LOGGER.info(pizza.getName() + " " + pizza.getPrice());
+        pizza = new Chicken(new BasePizza());
+        LOGGER.info(pizza.getName() + " " + pizza.getPrice());
+        pizza = new Chicken(new Bacon(new BasePizza()));
+        LOGGER.info(pizza.getName() + " " + pizza.getPrice());
+
 
         return "index";
     }
