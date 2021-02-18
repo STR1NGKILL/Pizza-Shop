@@ -1,4 +1,4 @@
-package reallume;
+package org.reallume;
 
 
 import org.springframework.boot.SpringApplication;
