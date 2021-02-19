@@ -24,8 +24,8 @@ public class Sausage extends PizzaDecorator {
     }
 
     @Override
-    public Double getPrice() {
-        return super.getPrice() + 25;
+    public double getPrice() {
+        return super.getPrice() + 25D;
     }
 
 }

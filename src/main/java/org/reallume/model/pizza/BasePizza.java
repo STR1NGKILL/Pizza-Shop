@@ -14,7 +14,7 @@ public class BasePizza implements Pizza {
 
     private int id;
     private String name = "Обычная пицца";
-    private Double price = 120D;
+    private double price = 120D;
 
     public BasePizza(int id){
         this.id = id;
@@ -26,7 +26,7 @@ public class BasePizza implements Pizza {
     }
 
     @Override
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
 }

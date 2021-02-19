@@ -18,7 +18,7 @@ public class PizzaDecorator implements Pizza {
     }
 
     @Override
-    public Double getPrice() {
+    public double getPrice() {
         return pizza.getPrice();
     }
 

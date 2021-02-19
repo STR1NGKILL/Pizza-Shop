@@ -6,5 +6,5 @@ public interface Pizza {
 
     String getName();
 
-    Double getPrice();
+    double getPrice();
 }

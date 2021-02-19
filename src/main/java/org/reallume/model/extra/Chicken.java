@@ -24,8 +24,8 @@ public class Chicken extends PizzaDecorator {
     }
 
     @Override
-    public Double getPrice() {
-        return super.getPrice() + 60;
+    public double getPrice() {
+        return super.getPrice() + 60D;
     }
 
 }

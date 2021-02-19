@@ -24,8 +24,8 @@ public class Pepperoni extends PizzaDecorator {
     }
 
     @Override
-    public Double getPrice() {
-        return super.getPrice() + 55;
+    public double getPrice() {
+        return super.getPrice() + 55D;
     }
 
 }

@@ -41,7 +41,13 @@ public class MainController {
         pizzas.add(Initializer.getPizzaInstance());
         LOGGER.info(Initializer.getPizzaInstance().getName() + " " + Initializer.getPizzaInstance().getPrice() + " " + Initializer.getPizzaInstance().getId());
 
+
         model.addAttribute("pizzas", pizzas);
+
+
+        Initializer.initializeOrder(Initializer.ORDER_PIZZA_TYPE_ID, 0, 1, Initializer.getPizzaInstance().getId(),  Initializer.getPizzaInstance().getPrice());
+        LOGGER.info(Initializer.getOrderInstance().getId() + " " + Initializer.getOrderInstance().getQuantity() + " " + Initializer.getOrderInstance().getProductId() + " " + Initializer.getOrderInstance().getCost());
+
 
         return "index";
     }

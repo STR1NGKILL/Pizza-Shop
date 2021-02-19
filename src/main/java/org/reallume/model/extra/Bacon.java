@@ -24,8 +24,8 @@ public class Bacon extends PizzaDecorator {
     }
 
     @Override
-    public Double getPrice() {
-        return super.getPrice() + 100;
+    public double getPrice() {
+        return super.getPrice() + 100D;
     }
 
 }
