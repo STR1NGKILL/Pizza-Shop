@@ -1,8 +1,6 @@
 package org.reallume.controller;
 
 import org.reallume.Initializer;
-import org.reallume.model.extra.*;
-import org.reallume.model.pizza.BasePizza;
 import org.reallume.model.pizza.Pizza;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
