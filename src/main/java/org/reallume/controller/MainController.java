@@ -1,5 +1,6 @@
 package org.reallume.controller;
 
+import org.reallume.Initializer;
 import org.reallume.model.extra.*;
 import org.reallume.model.pizza.BasePizza;
 import org.reallume.model.pizza.Pizza;
@@ -18,14 +19,24 @@ public class MainController {
     private static Logger LOGGER = Logger.getLogger("InfoLogging");
 
     @GetMapping(value = "/main")
-    public String mainPage(Model model){
+    public String mainPage(Model model) throws Exception {
 
         List<Pizza> pizzas = new ArrayList<>();
-        pizzas.add(new BasePizza());
-        pizzas.add(new Bacon(new BasePizza()));
-        pizzas.add(new Chicken(new BasePizza()));
-        pizzas.add(new Chicken(new Tomato(new BasePizza())));
-        pizzas.add(new Chicken(new Tomato(new Mushroom(new Sausage(new BasePizza())))));
+
+        Initializer.initializePizza(Initializer.PIZZA_BASE_ID);
+        pizzas.add(Initializer.getPizzaInstance());
+
+        Initializer.initializePizza(Initializer.PIZZA_BACON_ID);
+        pizzas.add(Initializer.getPizzaInstance());
+
+        Initializer.initializePizza(Initializer.PIZZA_CHICKEN_ID);
+        pizzas.add(Initializer.getPizzaInstance());
+
+        Initializer.initializePizza(Initializer.PIZZA_CHICKEN_TOMATO_ID);
+        pizzas.add(Initializer.getPizzaInstance());
+
+        Initializer.initializePizza(Initializer.PIZZA_CHICKEN_TOMATO_MUSHROOM_SAUSAGE_ID);
+        pizzas.add(Initializer.getPizzaInstance());
 
         model.addAttribute("pizzas", pizzas);
 
@@ -35,7 +46,6 @@ public class MainController {
         LOGGER.info(pizza.getName() + " " + pizza.getPrice());
         pizza = new Chicken(new Tomato(new BasePizza()));
         LOGGER.info(pizza.getName() + " " + pizza.getPrice());
-
 
         return "index";
     }
