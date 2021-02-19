@@ -25,27 +25,25 @@ public class MainController {
 
         Initializer.initializePizza(Initializer.PIZZA_BASE_ID);
         pizzas.add(Initializer.getPizzaInstance());
+        LOGGER.info(Initializer.getPizzaInstance().getName() + " " + Initializer.getPizzaInstance().getPrice() + " " + Initializer.getPizzaInstance().getId());
 
         Initializer.initializePizza(Initializer.PIZZA_BACON_ID);
         pizzas.add(Initializer.getPizzaInstance());
+        LOGGER.info(Initializer.getPizzaInstance().getName() + " " + Initializer.getPizzaInstance().getPrice() + " " + Initializer.getPizzaInstance().getId());
 
         Initializer.initializePizza(Initializer.PIZZA_CHICKEN_ID);
         pizzas.add(Initializer.getPizzaInstance());
+        LOGGER.info(Initializer.getPizzaInstance().getName() + " " + Initializer.getPizzaInstance().getPrice() + " " + Initializer.getPizzaInstance().getId());
 
         Initializer.initializePizza(Initializer.PIZZA_CHICKEN_TOMATO_ID);
         pizzas.add(Initializer.getPizzaInstance());
+        LOGGER.info(Initializer.getPizzaInstance().getName() + " " + Initializer.getPizzaInstance().getPrice() + " " + Initializer.getPizzaInstance().getId());
 
         Initializer.initializePizza(Initializer.PIZZA_CHICKEN_TOMATO_MUSHROOM_SAUSAGE_ID);
         pizzas.add(Initializer.getPizzaInstance());
+        LOGGER.info(Initializer.getPizzaInstance().getName() + " " + Initializer.getPizzaInstance().getPrice() + " " + Initializer.getPizzaInstance().getId());
 
         model.addAttribute("pizzas", pizzas);
-
-        Pizza pizza = new Bacon(new BasePizza());
-        LOGGER.info(pizza.getName() + " " + pizza.getPrice());
-        pizza = new Chicken(new BasePizza());
-        LOGGER.info(pizza.getName() + " " + pizza.getPrice());
-        pizza = new Chicken(new Tomato(new BasePizza()));
-        LOGGER.info(pizza.getName() + " " + pizza.getPrice());
 
         return "index";
     }

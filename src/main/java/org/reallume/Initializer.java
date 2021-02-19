@@ -16,11 +16,11 @@ public class Initializer {
 
     public static void initializePizza(Integer objectId) throws Exception {
         switch (objectId) {
-            case PIZZA_BASE_ID -> pizzaInstance = new BasePizza();
-            case PIZZA_BACON_ID -> pizzaInstance = new Bacon(new BasePizza());
-            case PIZZA_CHICKEN_ID -> pizzaInstance = new Chicken(new BasePizza());
-            case PIZZA_CHICKEN_TOMATO_ID -> pizzaInstance = new Chicken(new Tomato(new BasePizza()));
-            case PIZZA_CHICKEN_TOMATO_MUSHROOM_SAUSAGE_ID -> pizzaInstance = new Chicken(new Tomato(new Mushroom(new Sausage(new BasePizza()))));
+            case PIZZA_BASE_ID -> pizzaInstance = new BasePizza(PIZZA_BASE_ID);
+            case PIZZA_BACON_ID -> pizzaInstance = new Bacon(new BasePizza(PIZZA_BACON_ID));
+            case PIZZA_CHICKEN_ID -> pizzaInstance = new Chicken(new BasePizza(PIZZA_CHICKEN_ID));
+            case PIZZA_CHICKEN_TOMATO_ID -> pizzaInstance = new Chicken(new Tomato(new BasePizza(PIZZA_CHICKEN_TOMATO_ID)));
+            case PIZZA_CHICKEN_TOMATO_MUSHROOM_SAUSAGE_ID -> pizzaInstance = new Chicken(new Tomato(new Mushroom(new Sausage(new BasePizza(PIZZA_CHICKEN_TOMATO_MUSHROOM_SAUSAGE_ID)))));
             default -> throw new Exception("Error! Unknown operating system.");
         }
     }

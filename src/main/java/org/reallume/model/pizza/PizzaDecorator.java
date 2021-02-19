@@ -10,6 +10,9 @@ public class PizzaDecorator implements Pizza {
     }
 
     @Override
+    public int getId() { return pizza.getId(); }
+
+    @Override
     public String getName() {
         return pizza.getName();
     }

@@ -1,9 +1,10 @@
 package org.reallume.model.pizza;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 
 @Getter
 @Setter
@@ -11,8 +12,13 @@ import lombok.Setter;
 @AllArgsConstructor
 public class BasePizza implements Pizza {
 
+    private int id;
     private String name = "Обычная пицца";
     private Double price = 120D;
+
+    public BasePizza(int id){
+        this.id = id;
+    }
 
     @Override
     public String getName() {
