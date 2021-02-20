@@ -2,20 +2,20 @@ package org.reallume.model.order;
 
 public interface Order {
 
-    int getId();
+    Long getId();
 
-    int getQuantity();
+    Integer getQuantity();
 
-    int getProductId();
+    Integer getProductId();
 
     double getCost();
 
-    void setId(int id);
+    void setId(Long id);
 
-    void setQuantity(int quantity);
+    void setQuantity(Integer quantity);
 
-    void setProductId(int productId);
+    void setProductId(Integer productId);
 
-    void setCost(double cost);
+    void setCost(Double cost);
 
 }

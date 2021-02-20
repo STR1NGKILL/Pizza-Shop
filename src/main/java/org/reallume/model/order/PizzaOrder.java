@@ -11,18 +11,18 @@ import lombok.Setter;
 @AllArgsConstructor
 public class PizzaOrder implements Order{
 
-    private int id;
-    private int quantity;
-    private int pizzaId;
-    private double cost;
+    private Long id;
+    private Integer quantity;
+    private Integer pizzaId;
+    private Double cost;
 
     @Override
-    public int getProductId() {
+    public Integer getProductId() {
         return pizzaId;
     }
 
     @Override
-    public void setProductId(int productId) {
+    public void setProductId(Integer productId) {
         this.pizzaId = productId;
     }
 
