@@ -1,20 +1,11 @@
 package org.reallume.database;
 
-import java.util.Map;
+import java.util.ArrayList;
 
 public interface VirtualDatabase<T> {
 
-    void create();
-
-    void connect();
-
-    void disconnect();
-
-    Map<Long, T> getConnection() throws Exception;
+    ArrayList<T> getData();
 
     Long generatorAutoId();
-
-
-
 
 }

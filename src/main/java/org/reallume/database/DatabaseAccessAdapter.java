@@ -1,13 +1,12 @@
 package org.reallume.database;
 
-public interface DatabaseAccessAdapter<T> {
+public interface DatabaseAccessAdapter {
 
-    void addItem(T item) throws Exception;
+    void open();
 
-    T getItemById(Long id) throws Exception;
+    void close();
 
-    void removeItemById(Long id) throws Exception;
-
-    void removeAll() throws Exception;
+    DatabaseAccessAdapter getInstance();
 
 }
+
