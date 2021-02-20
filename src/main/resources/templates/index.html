@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Главная</title>
 
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+
     <!--Basic-->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.js"></script>
@@ -19,11 +21,17 @@
 
 <div class="container-fluid">
 
-    <div class="row">
+    <div class="row" style="margin-top: 3rem">
         <div class="col"></div>
-            <div class="col-auto">
-
+        <div class="col-6" style="margin-left: -1rem; margin-right: 1rem">
+            <div class="custom-control-inline">
+                <img src="../static/images/logo.png" class="card-img-top" alt="..." style="width: 7%; margin-top: -10px">
+                <h3 style="padding-left: 1rem; font-family: 'SF UI Display';">Pizza-Shop</h3>
             </div>
+        </div>
+        <div class="col-1">
+            <a href="#" class="btn btn-danger" style="margin-top: 2rem"><i class="fas fa-pizza-slice"></i>&nbsp;&nbsp;Мои пиццы</a>
+        </div>
         <div class="col"></div>
     </div>
 
@@ -32,7 +40,7 @@
             <div class="col-7">
                 <div class="row" >
                     <div class="card" style="width: 19rem; height: 23rem; margin-right: 2rem; margin-top: 3rem" th:each="pizza : ${pizzas}">
-                        <img src="../static/images/pizza_img.jpg" class="card-img-top" alt="...">
+                        <img src="../static/images/card_image.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div style="height: 5rem">
                                 <h5 class="card-title" th:utext="${pizza.getPrice()} + ' ₽'"></h5>
