@@ -24,7 +24,7 @@ public class Mushroom extends PizzaDecorator {
     }
 
     @Override
-    public double getPrice() {
+    public Double getPrice() {
         return super.getPrice() + 40D;
     }
 

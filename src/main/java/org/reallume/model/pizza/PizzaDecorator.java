@@ -10,7 +10,7 @@ public class PizzaDecorator implements Pizza {
     }
 
     @Override
-    public int getId() { return pizza.getId(); }
+    public Integer getId() { return pizza.getId(); }
 
     @Override
     public String getName() {
@@ -18,7 +18,7 @@ public class PizzaDecorator implements Pizza {
     }
 
     @Override
-    public double getPrice() {
+    public Double getPrice() {
         return pizza.getPrice();
     }
 

@@ -24,7 +24,7 @@ public class Tomato extends PizzaDecorator {
     }
 
     @Override
-    public double getPrice() {
+    public Double getPrice() {
         return super.getPrice() + 15D;
     }
 

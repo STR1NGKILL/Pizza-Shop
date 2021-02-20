@@ -19,7 +19,7 @@ public class Initializer {
     static private Pizza pizzaInstance;
     static private Order orderInstance;
 
-    public static void initializePizza(Integer objectId) throws Exception {
+    public static void initializePizza(int objectId) throws Exception {
         switch (objectId) {
             case PIZZA_BASE_ID -> pizzaInstance = new BasePizza(PIZZA_BASE_ID);
             case PIZZA_BACON_ID -> pizzaInstance = new Bacon(new BasePizza(PIZZA_BACON_ID));
@@ -30,7 +30,7 @@ public class Initializer {
         }
     }
 
-    public static void initializeOrder(Integer objectId, int id, int quantity, int productId, double cost) throws Exception {
+    public static void initializeOrder(int objectId, Long id, Integer quantity, Integer productId, Double cost) throws Exception {
         switch (objectId) {
             case ORDER_PIZZA_TYPE_ID -> orderInstance = new PizzaOrder(id, quantity, productId, cost);
             default -> throw new Exception("Error! Unknown operating system.");

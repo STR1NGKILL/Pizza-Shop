@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class BasePizza implements Pizza {
 
-    private int id;
+    private Integer id;
     private String name = "Обычная пицца";
-    private double price = 120D;
+    private Double price = 120D;
 
-    public BasePizza(int id){
+    public BasePizza(Integer id){
         this.id = id;
     }
 
@@ -26,7 +26,7 @@ public class BasePizza implements Pizza {
     }
 
     @Override
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 }

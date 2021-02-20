@@ -2,9 +2,9 @@ package org.reallume.model.pizza;
 
 public interface Pizza {
 
-    int getId();
+    Integer getId();
 
     String getName();
 
-    double getPrice();
+    Double getPrice();
 }
