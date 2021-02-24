@@ -2,6 +2,7 @@ package org.reallume.model.order;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.reallume.model.pizza.Pizza;
 
 
 @NoArgsConstructor
@@ -10,8 +11,7 @@ public class PizzaOrder implements Order{
 
     private Long id;
     private Integer quantity;
-    private Integer pizzaId;
-    private Double cost;
+    private Pizza pizza;
 
     @Override
     public Long getId() {
@@ -34,23 +34,13 @@ public class PizzaOrder implements Order{
     }
 
     @Override
-    public Integer getProductId() {
-        return pizzaId;
+    public Pizza getProduct() {
+        return pizza;
     }
 
     @Override
-    public void setProductId(Integer productId) {
-        this.pizzaId = productId;
-    }
-
-    @Override
-    public Double getCost() {
-        return cost;
-    }
-
-    @Override
-    public void setCost(Double cost) {
-        this.cost = cost;
+    public void setProduct(Pizza pizza) {
+        this.pizza = pizza;
     }
 
 }

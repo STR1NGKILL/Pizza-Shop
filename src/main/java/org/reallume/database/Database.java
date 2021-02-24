@@ -18,7 +18,7 @@ public class Database<T> implements VirtualDatabase<T>{
     }
 
     @Override
-    public Long generatorAutoId() {
+    public Long generateAutoId() {
         this.availableId += 1L;
         return this.availableId;
     }

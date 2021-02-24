@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина заказов</title>
+
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+
+    <!--Basic-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" rel="stylesheet">
+
+    <!--Table-->
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div class="row" style="margin-top: 3rem">
+        <div class="col"></div>
+        <div class="col-6" style="margin-left: -1rem; margin-right: 1rem">
+            <div class="custom-control-inline">
+                <img src="../static/images/logo.png" class="card-img-top" alt="..."
+                     style="width: 7%; margin-top: -10px">
+                <h3 style="padding-left: 1rem; font-family: 'SF UI Display';">Pizza-Shop</h3>
+            </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col"></div>
+    </div>
+
+    </br>
+
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-7">
+
+            <a th:href="@{/main}" class="btn btn-danger" style="margin-top: 1rem"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;К
+                каталогу</a>
+            <h2 style="font-family: 'SF UI Display'; margin-top: 3rem">Пиццы для заказа</h2>
+
+            </br></br>
+
+            <div class="row">
+                <div th:if="${cart.orders.isEmpty()}" class="col-7">
+                    <div class="row" style="margin-top: 2rem">
+                        <div class="col" style="width: 20rem">
+                            <h2>Время заказать что-нибудь! </h2>
+                            <h5>Переходи в каталог и выбирай пиццу на свой вкус</h5>
+                        </div>
+                        <div class="col" style="width: 15rem">
+                            <i style="color: darkorange" class="far fa-smile-wink fa-9x"><i class="fas fa-pizza-slice fa-1x" style="color: firebrick"></i></i>
+                        </div>
+                    </div>
+                </div>
+                <div th:if="${!cart.orders.isEmpty()}"class="col-8">
+                    <div th:each="order, state : ${cart.orders}">
+                        <div class="card" style="height: auto; margin-top: 0.5rem">
+                            <div class="form-row align-items-center align-middle" style="height: auto; margin-left: 1rem; padding-top: 0.5rem; padding-bottom: 0.5rem">
+                                <div class="col-sm-1 my-1">
+                                    <a th:utext="${state.index + 1}"></a>
+                                </div>
+                                <div class="col-sm-5 my-1" style="margin-left: -0.5rem">
+                                    <a th:utext="${order.getProduct().getName()}"></a>
+                                </div>
+                                <div class="col-sm-3 my-1 text-middle" style="margin-left: 1.5rem">
+                                    <a th:href="@{/cart/orders/{order_id}/quantity/down(order_id=${order.getId()})}" class ="btn"><i style="color: red" class="fas fa-minus"></i></a>
+                                    <a style="width: 1rem" th:utext="${order.getQuantity()} + ' шт.'"></a>
+                                    <a th:href="@{/cart/orders/{order_id}/quantity/up(order_id=${order.getId()})}" class ="btn"><i class="fas fa-plus" style="color: green"></i></a>
+                                </div>
+                                <div class="col-sm-2 my-1">
+                                    <a style="width: 1rem" th:utext="${order.getProduct().getPrice() * order.getQuantity()} + ' руб.'"></a>
+                                </div>
+                                <div class="col-auto my-1 text-right">
+                                    <a th:href="@{/cart/orders/{order_id}/remove(order_id=${order.getId()})}" class="btn" style="width: 1rem"><i class="fas fa-times"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="card" style="height: auto; width: 20rem; margin-top: 0.5rem">
+                        <div class="card-body">
+                            <h3 class="card-title">Итого</h3>
+                            <h1 class="card-text" th:utext="${cart.getOverallCost()} + ' ₽'">0 ₽</h1>
+                            <h4 class="card-text" th:if="${cart.getOverallCost() >= 1500}">+ Подарок (акция)</h4>
+                            <br/>
+                            <a th:if="${!cart.orders.isEmpty()}" href="#" class="btn btn-success" style="width: 7rem">Заказать</a>
+                            <a th:if="${cart.orders.isEmpty()}" href="#" class="btn btn-success disabled" style="width: 7rem">Заказать</a>
+                            &nbsp;<a th:href="@{/cart/clear}" class="btn btn-secondary" style="width: 7rem">Очистить</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+
+</div>
+
+
+<!--Basic-->
+<script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

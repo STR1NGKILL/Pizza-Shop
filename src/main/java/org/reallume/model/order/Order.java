@@ -1,5 +1,7 @@
 package org.reallume.model.order;
 
+import org.reallume.model.pizza.Pizza;
+
 public interface Order {
 
     Long getId();
@@ -10,12 +12,8 @@ public interface Order {
 
     void setQuantity(Integer quantity);
 
-    Integer getProductId();
+    Pizza getProduct();
 
-    void setProductId(Integer productId);
-
-    Double getCost();
-
-    void setCost(Double cost);
+    void setProduct(Pizza pizza);
 
 }

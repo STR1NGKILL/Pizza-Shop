@@ -38,7 +38,6 @@ public class DatabaseAccessPizza implements DatabaseAccessAdapter{
         if(databaseData == null)
             throw new Exception("Error! Access to the disconnected database");
         else {
-            Long id = database.generatorAutoId();
             databaseData.add(item);
         }
     }

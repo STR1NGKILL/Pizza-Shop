@@ -29,10 +29,15 @@ public class CommonCart implements Cart{
     }
 
     @Override
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    @Override
     public Double getOverallCost() {
         Double overall = 0D;
-        for (Order item:orders) {
-            overall += item.getCost();
+        for (Order order:orders) {
+            overall += order.getProduct().getPrice() * order.getQuantity();
         }
         return overall;
     }

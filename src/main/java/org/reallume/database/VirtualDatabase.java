@@ -6,6 +6,6 @@ public interface VirtualDatabase<T> {
 
     ArrayList<T> getData();
 
-    Long generatorAutoId();
+    Long generateAutoId();
 
 }

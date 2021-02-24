@@ -29,10 +29,17 @@
                 <h3 style="padding-left: 1rem; font-family: 'SF UI Display';">Pizza-Shop</h3>
             </div>
         </div>
-        <div class="col-1">
-            <a href="#" class="btn btn-danger" style="margin-top: 2rem"><i class="fas fa-pizza-slice"></i>&nbsp;&nbsp;Мои пиццы</a>
+        <div class="col-fix">
+            <a th:href="@{/cart}" class="btn btn-danger" style="margin-top: 2rem"><i class="fas fa-pizza-slice"></i>&nbsp;&nbsp;Мои пиццы</a>
         </div>
         <div class="col"></div>
+    </div>
+
+    <div class="row-8 text-middle" style="margin-top: 3rem">
+        <div class="alert alert-success " role="alert">
+            <h3 class="alert-heading text-center">Акция</h3>
+            <p class="text-center" >При заказа от 1500 рублей даём подарок! Срок действия акции с 25.02 по 14.03. Не упусти свой шанс получить крутые призы!</p>
+        </div>
     </div>
 
     <div class="row">
@@ -46,7 +53,7 @@
                                 <h5 class="card-title" th:utext="${pizza.getPrice()} + ' ₽'"></h5>
                                 <p class="card-text" th:utext="${pizza.getName()}"></p>
                             </div>
-                            <a href="#" class="btn btn-primary" style="margin-top: 2rem">Заказать</a>
+                            <a th:href="@{/catalog/{pizza_id}/addOrder/(pizza_id=${pizza.getId()})}" class="btn btn-primary" style="margin-top: 2rem">Заказать</a>
                         </div>
                     </div>
                 </div>
