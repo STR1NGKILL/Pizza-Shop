@@ -1,5 +1,6 @@
 package org.reallume.controller;
 
+import lombok.NoArgsConstructor;
 import org.reallume.database.Database;
 import org.reallume.database.DatabaseAccessPizza;
 import org.reallume.model.cart.Cart;
@@ -22,10 +23,23 @@ public class MainController {
     private static Cart cart = new CommonCart();
     private static Long orderId = 0L;
 
+    //класс-обёртка, чтобы добавить метод comparePizzaId в модель
+    private static class comparePizzaId{
+
+        //сравнивает id товара из каталога с id товара заказа из корзины. Если есть совпадение, возвращает true, иначе false
+        public static Boolean compare(Integer id) {
+            for (Order order:cart.getOrders())
+                if(order.getProduct().getId().equals(id))
+                    return true;
+
+            return false;
+        }
+    }
+
     @GetMapping(value = "/main")
     public String mainPage(Model model) throws Exception {
         model.addAttribute("pizzas", databaseAccessPizza.getAll());
-        model.addAttribute("orders", cart.getOrders());
+        model.addAttribute("comparePizzaId", new comparePizzaId());
         return "index";
     }
 

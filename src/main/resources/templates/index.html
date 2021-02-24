@@ -53,7 +53,8 @@
                                 <h5 class="card-title" th:utext="${pizza.getPrice()} + ' ₽'"></h5>
                                 <p class="card-text" th:utext="${pizza.getName()}"></p>
                             </div>
-                            <a th:href="@{/catalog/{pizza_id}/addOrder/(pizza_id=${pizza.getId()})}" class="btn btn-primary" style="margin-top: 2rem">Заказать</a>
+                            <a th:if="${!comparePizzaId.compare(pizza.getId())}" th:href="@{/catalog/{pizza_id}/addOrder/(pizza_id=${pizza.getId()})}" class="btn btn-primary" style="margin-top: 2rem">Заказать</a>
+                            <a th:if="${comparePizzaId.compare(pizza.getId())}" href="#" class="btn btn-success" style="margin-top: 2rem"><i class="fas fa-check"></i></a>
                         </div>
                     </div>
                 </div>
