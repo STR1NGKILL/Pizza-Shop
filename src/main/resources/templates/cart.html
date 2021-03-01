@@ -65,7 +65,7 @@
                                 <div class="col-sm-1 my-1">
                                     <a th:utext="${state.index + 1}"></a>
                                 </div>
-                                <div class="col-sm-5 my-1" style="margin-left: -0.5rem">
+                                <div class="col-sm-5 my-1" style="margin-left: -1.3rem">
                                     <a th:utext="${order.getProduct().getName()}"></a>
                                 </div>
                                 <div class="col-sm-3 my-1 text-middle" style="margin-left: 1.5rem">
@@ -90,12 +90,25 @@
                             <h1 class="card-text" th:utext="${cart.getOverallCost()} + ' ₽'">0 ₽</h1>
                             <h4 class="card-text" th:if="${cart.getOverallCost() >= 1500}">+ Подарок (акция)</h4>
                             <br/>
-                            <a th:if="${!cart.orders.isEmpty()}" href="#" class="btn btn-success" style="width: 7rem">Заказать</a>
+                            <a th:if="${!cart.orders.isEmpty()}" href="#" class="btn btn-success orderBtn" style="width: 7rem">Заказать</a>
                             <a th:if="${cart.orders.isEmpty()}" href="#" class="btn btn-success disabled" style="width: 7rem">Заказать</a>
                             &nbsp;<a th:href="@{/cart/clear}" class="btn btn-secondary" style="width: 7rem">Очистить</a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+
+    <div class="row" style="margin-top: 5rem">
+        <div class="col"></div>
+        <div class="col-4 text-center">
+            <div class="alert alert-warning alert-dismissible fade" role="alert" id="buttonAlert">
+                <strong>Заказ принят!</strong> Ожидайте доставку в течение 30 минут.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         </div>
         <div class="col"></div>
@@ -114,6 +127,15 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.js"
         integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.orderBtn ').on('click', function (event) {
+            event.preventDefault();
+            $("#buttonAlert").addClass('show')
+        })
+    });
+</script>
 
 </body>
 </html>
