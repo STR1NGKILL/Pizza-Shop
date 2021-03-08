@@ -6,6 +6,10 @@ import java.util.List;
 
 public interface Cart {
 
+    void setId(Long id);
+
+    Long getId();
+
     void addOrder(Order order);
 
     void removeOrderById(Long id);

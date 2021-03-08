@@ -1,6 +1,7 @@
 package org.reallume;
 
 import org.reallume.database.Database;
+import org.reallume.database.DatabaseAccessCart;
 import org.reallume.database.DatabaseAccessPizza;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,6 +16,7 @@ public class Application {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);
         createPizzaDatabase();
+        createCartDatabase();
     }
 
     private static void createPizzaDatabase() throws Exception {
@@ -41,6 +43,11 @@ public class Application {
         LOGGER.info(Initializer.getPizzaInstance().getName() + " " + Initializer.getPizzaInstance().getPrice() + " " + Initializer.getPizzaInstance().getId());
         databaseAccessPizza.addItem(Initializer.getPizzaInstance());
 
+    }
+
+    private static void createCartDatabase() {
+        DatabaseAccessCart databaseAccessCart = new DatabaseAccessCart(new Database<>()).getInstance();
+        databaseAccessCart.open();
     }
 
 }

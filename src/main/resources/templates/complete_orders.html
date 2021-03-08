@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Выполненные заказы</title>
+
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+
+    <!--Basic-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" rel="stylesheet">
+
+    <!--Table-->
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div class="row" style="margin-top: 3rem">
+        <div class="col"></div>
+        <div class="col-6" style="margin-left: -1rem; margin-right: 1rem">
+            <div class="custom-control-inline">
+                <img src="../static/images/logo.png" class="card-img-top" alt="..."
+                     style="width: 7%; margin-top: -10px">
+                <h3 style="padding-left: 1rem; font-family: 'SF UI Display';">Pizza-Shop</h3>
+            </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col"></div>
+    </div>
+
+    </br>
+
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-7">
+
+            <a th:href="@{/main}" class="btn btn-danger" style="margin-top: 1rem"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;К
+                каталогу</a>
+            <h2 style="font-family: 'SF UI Display'; margin-top: 3rem">Выполненные заказы</h2>
+
+            </br></br>
+
+            <div class="row">
+                <div th:if="${carts.isEmpty()}" class="col-7">
+                    <div class="row" style="margin-top: 2rem">
+                        <div class="col" style="width: 20rem">
+                            <h2>Список заказов пуст! </h2>
+                            <h5>Переходи в каталог, выбирай пиццу на свой вкус и делай заказ. Он обязательно появится тут!</h5>
+                        </div>
+                        <div class="col" style="width: 15rem">
+                            <i class="fas fa-shopping-basket fa-9x" style="color: forestgreen"></i></i>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div th:if="${!carts.isEmpty()}" class="col-8">
+                    <div th:each="cart, state1 : ${carts}">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <a class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+                                    th:utext="${'Заказ ' + (state1.index + 1)}">
+                                    </a>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div class="row" th:each="order, state2 : ${cart.getOrders()}">
+                                            <div class="col-sm-1 my-1">
+                                                <a th:utext="${state2.index + 1}"></a>
+                                            </div>
+                                            <div class="col-sm-5 my-1" style="margin-left: -1.3rem">
+                                                <a th:utext="${order.getProduct().getName()}"></a>
+                                            </div>
+                                            <div class="col-sm-3 my-1 text-middle" style="margin-left: 1.5rem">
+                                                <a style="width: 1rem" th:utext="${order.getQuantity()} + ' шт.'"></a>
+                                            </div>
+                                            <div class="col-sm-2 my-1">
+                                                <a style="width: 1rem" th:utext="${order.getProduct().getPrice() * order.getQuantity()} + ' руб.'"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+
+
+
+</div>
+
+
+<!--Basic-->
+<script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+
+
+
+</body>
+</html>

@@ -7,10 +7,23 @@ import java.util.List;
 
 public class CommonCart implements Cart{
 
-    List<Order> orders;
+    private Long id;
 
-    public CommonCart(){
+    private List<Order> orders;
+
+    public CommonCart(Long id){
+        this.id = id;
         orders = new ArrayList<>();
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public Long getId() {
+        return id;
     }
 
     @Override

@@ -90,7 +90,7 @@
                             <h1 class="card-text" th:utext="${cart.getOverallCost()} + ' ₽'">0 ₽</h1>
                             <h4 class="card-text" th:if="${cart.getOverallCost() >= 1500}">+ Подарок (акция)</h4>
                             <br/>
-                            <a th:if="${!cart.orders.isEmpty()}" href="#" class="btn btn-success orderBtn" style="width: 7rem">Заказать</a>
+                            <a th:if="${!cart.orders.isEmpty()}" th:href="@{/cart/order-it}" class="btn btn-success orderBtn" style="width: 7rem">Заказать</a>
                             <a th:if="${cart.orders.isEmpty()}" href="#" class="btn btn-success disabled" style="width: 7rem">Заказать</a>
                             &nbsp;<a th:href="@{/cart/clear}" class="btn btn-secondary" style="width: 7rem">Очистить</a>
                         </div>
@@ -133,8 +133,15 @@
         $('.orderBtn ').on('click', function (event) {
             event.preventDefault();
             $("#buttonAlert").addClass('show')
+            setTimeout(trans, 1000);
+
         })
     });
+
+    function trans() {
+        location.href = "/cart/order-it"
+    }
+
 </script>
 
 </body>
